@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tenant Register</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Tenant Registration</h2>
+      <hr />
+      <br />
+      <div class="form" >
+        Register Number: <input type="text" name="RegNo" id="regno" disabled /> <br /><br />
+        Name:&nbsp; <input type="text" name="name" id="name" /> <br /><br />
+        Gender:  <select name="gender" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select><br /><br />
+        Address: <input type="text" name="Address" id="address" /> <br /><br />
+        Mobile No: <input type="text" name="mob" id="mob" /> <br /><br /> 
+        Email Id: <input type="email" name="mailid" id="mailid" /> <br /><br />
+        Password: <input type="password" name="pswd1" id="pswd1" /> <br /><br />
+        Confirm Password: <input type="password" name="pswd2" id="pswd2" /> <br /><br />
+      </div>
+
+      <div class="buttons">
+        <button id="insert">Register</button>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+
+    <script src="./fireConfig.js"></script>
+
+    <script src="./TenantScript.js"></script>
+  </body>
+</html>

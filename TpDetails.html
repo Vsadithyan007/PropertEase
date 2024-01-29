@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 20%;
+    }@media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+    
+            /* Set styles for the table */
+            table {
+              font-family: Arial, sans-serif;
+              font-size: 14px;
+              border-collapse: collapse;
+              width: 100%;
+              margin: auto;
+            }
+        
+            /* Set styles for the table cells and headings */
+            th, td {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: center;
+            }
+        
+            /* Center the table headings */
+            th {
+              background-color: #f2f2f2;
+              text-align: center;
+              padding: 12px;
+            }
+        
+            /* Add hover effect to table rows */
+            tr:hover {
+              background-color: #f5f5f5;
+            }
+        
+            /* Add striped rows to the table */
+            tr:nth-child(even) {
+              background-color: #f2f2f2;
+            }
+        
+            /* Set styles for the "Show Interest" button */
+            button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 14px;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+        
+            /* Center the table vertically and horizontally */
+
+  </style>
+  </style>
+</script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-12 sidenav">
+      <h2>Admin Dashboard</h2>
+      <ul class="nav nav-pills nav-justified">
+        <li><a href="AdminDash.html">Dashboard</a></li>
+        <li class="active"><a href="#">TopUp Requests</a></li>
+        <li><a href="mnglandlord.html">Manage Landlord</a></li>
+        <li><a href="mngtenant.html">Manage Tenant</a></li>
+        <li><a href="wallet.html">Wallet Details</a></li>
+        <li><a href="Feedlandlord.html">Landlord Feedback</a></li>
+        <li><a href="Feedtenant.html">Tenant FeedBack</a></li>
+        <li><a href="logout.html">Log out</a></li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9"><div class="col-md-6">
+        <div class="container">
+            <h2>TopUp Request Details</h2>
+            <hr />
+            <br />
+            <div class="form">
+              Register Number: <input type="text" name="RegNo" id="regno"/> <br /><br />
+              Name:&nbsp; <input type="text" name="name" id="name" /> <br /><br />
+              Wallet Address: <input type="text" name="Waddrr" id="Waddr" /> <br /><br />
+              Amount: <input type="text" name="amt" id="amt" /> <br /><br />
+              Date: <input type="text" name="date" id="date" /> <br /><br />
+              Status: <input type="text" name="status" id="status"/> <br /><br />
+              Transaction Date: <input type="text" name="tdate" id="tdate"/> <br /><br />
+            </div>
+        
+            <div class="buttons">
+              <button id="back" onclick="window.location.href='TpView.html'">BACK</button>
+
+              </div>
+          </div>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const regNo = urlParams.get('ID');
+            const name1 = urlParams.get('name');
+            const Waddr1 = urlParams.get('Wallet');
+            const amt =urlParams.get('amt');
+            const Date1 =urlParams.get('Date');
+            const Status1 = urlParams.get('Stat');
+            const td= urlParams.get('td');
+
+            document.getElementById("regno").value = regNo;
+            document.getElementById("name").value = name1;
+            document.getElementById("Waddr").value = Waddr1;
+            document.getElementById("amt").value = amt;
+            document.getElementById("date").value = Date1;
+            document.getElementById("status").value = Status1;
+            document.getElementById("tdate").value = td;
+            // Create a new button element
+            var sendButton = document.createElement("button");
+            sendButton.id = "Send";
+            sendButton.style.color = "rgb(9, 5, 5)";
+            sendButton.style.backgroundColor = "rgb(24, 251, 48)";
+            sendButton.innerText = "SEND";
+
+            var rejectButton = document.createElement("button");
+            rejectButton.id = "Reject";
+            rejectButton.style.color = "rgb(9, 5, 5)";
+            rejectButton.style.backgroundColor = "rgb(24, 251, 48)";
+            rejectButton.innerText = "REJECT";
+            // Append the button to the appropriate location in the DOM
+            document.querySelector(".buttons").appendChild(sendButton);
+            document.querySelector(".buttons").appendChild(rejectButton);
+
+            var sendButton = document.getElementById("Send");
+            console.log(Status1);
+            if(Status1=="Pending")
+            {
+                sendButton.addEventListener("click", function() {
+                var confirmed = window.confirm("Confirm to Send?");
+                if (confirmed) {
+                    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                    const Tdate = new Date().toLocaleString('en-US', options);
+                    firebase.database().ref("TopUpReq/" + Date1).update({ Status: "Sended",T_Date: Tdate});
+                    alert("Sended");
+                    document.getElementById("status").value = "Sended";
+                    document.getElementById("tdate").value = Tdate;
+                    sendButton.remove();
+                    rejectButton.remove();
+                }
+            })
+            rejectButton.addEventListener("click", function() {
+            var confirmed = window.confirm("Confirm to Reject");
+            if (confirmed) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                    const Tdate = new Date().toLocaleString('en-US', options);
+                    firebase.database().ref("TopUpReq/" + Date1).update({ Status: "Rejected",T_Date: Tdate});
+                    alert("Rejected");
+                    document.getElementById("status").value = "Rejected";
+                    document.getElementById("tdate").value = Tdate;
+                    sendButton.remove();
+                    rejectButton.remove();
+        }
+    });
+          }
+          else{
+            sendButton.remove();
+            rejectButton.remove();
+          }
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+        
+<script src="./fireConfig.js"></script>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

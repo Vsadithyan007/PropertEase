@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Landlord</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    nav {
+	margin: 27px auto 0;
+
+	position: relative;
+	width: 100% ;
+	height: fit-content ;
+	background-color: #34495e;
+	border-radius: 8px;
+	font-size: 0;
+}
+a:hover {
+  color: rgb(255, 255, 255);
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+a:nth-child(1) {
+	width: 12.5%;
+}
+a:nth-child(2) {
+	width: 12.5%;
+}
+a:nth-child(3) {
+	width: 12.5%;
+}
+a:nth-child(4) {
+	width: 12.5%;
+}
+a:nth-child(5) {
+	width: 12.5%;
+}
+a:nth-child(6) {
+	width: 12.5%;
+}
+a:nth-child(7) {
+	width: 12.5%;
+}
+a:nth-child(8) {
+	width: 12.5%;
+}
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 12.5%;
+	left: 0;
+	background-color: #1abc9c;
+}
+nav .start-addpr, a:nth-child(2):hover~.animation {
+	width: 12.5%;
+	left: 12.5%;
+	background-color: #e74c3c;
+}
+nav .start-viewpr, a:nth-child(3):hover~.animation {
+	width: 12.5%;
+	left: 25%;
+	background-color: #3498db;
+}
+nav .start-viewten, a:nth-child(4):hover~.animation {
+	width: 12.5%;
+	left: 37.5%;
+	background-color: #9b59b6;
+}
+nav .start-mngcntr, a:nth-child(5):hover~.animation {
+	width: 12.5%;
+	left: 50%;
+	background-color: #e67e22;
+}
+nav .start-trnh, a:nth-child(6):hover~.animation {
+	width: 12.5%;
+	left: 62.5%;
+	background-color: #49e622;
+}
+nav .start-feed, a:nth-child(7):hover~.animation {
+	width: 12.5%;
+	left: 75%;
+	background-color: #22aee6;
+}
+nav .start-logout, a:nth-child(8):hover~.animation {
+	width: 12.5%;
+	left: 87.5%;
+	background-color: #e8dd1b;
+}
+
+
+
+
+p {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #ecf0f1;
+    font-family: 'Cherry Swash',cursive;
+    font-size: 16px;
+}
+
+span {
+    color: #2BD6B4;
+}
+
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+    
+            /* Set styles for the table */
+            .table-wrapper{
+    margin: 30px 40px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #9b59b6;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before{
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child{
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+        
+            /* Set styles for the "Show Interest" button */
+            button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 14px;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+        
+            /* Center the table vertically and horizontally */
+
+  </style>
+  <script>var regno = sessionStorage.getItem('regno');
+</script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-12 sidenav">
+      <h2 style="font-family: fantasy;">Landlord Dashboard</h2>
+      
+
+      <nav>
+        <a href="LandLordDash.html">Home</a>
+        <a href="Property.html">ADD_PROPERTY</a>
+        <a href="PropertyList.html">VIEW_PROPERTY</a>
+        <a href="#">VIEW_TENANTS</a>
+        <a href="mngcontract.html">MANAGE_CONTRACT</a>
+        <a href="transHistory.html">TRANSACTION_HISTORY</a>
+        <a href="LandlordFeed.html">FEEDBACK</a>
+        <a href="logout.html">LOGOUT</a>
+        <div class="animation start-viewten"></div>
+      </nav>
+
+    </div>
+    <div class="col-sm-9" style="width: 100%;">
+        
+            <div class="container">
+                <h2>Tenant Details</h2>
+                <div class="form">
+                  Register Number   : <input type="text" name="TRegno" id="TRegno"/> <br /><br />
+                  Name              : <input type="text" name="Tname" id="Tname" /> <br /><br />
+                  Mobile No.        : <input type="text" name="Tmob" id="Tmob" /> <br /><br />
+                  Mail Id           : <input type="text" name="Tmail" id="Tmail" /> <br /><br />
+                  Address           : <input type="text" name="Taddr" id="Taddr"/> <br /><br />
+                  City              : <input type="text" name="Tcity" id="Tcity"/><br ><br />
+                  State             : <input type="text" name="Tstate" id="Tstate"/><br ><br />
+                  Gender            : <input type="text" name="Tgender" id="Tgender"/><br ><br />
+                  Wallet Address    : <input type="text" name="Twallet" id="Twallet"/><br ><br />
+                </div>
+
+                <h2>Landlord Details</h2>
+                <div class="form">
+                  Register Number   : <input type="text" name="LRegno" id="LRegno"/> <br /><br />
+                  Name              : <input type="text" name="Lname" id="Lname" /> <br /><br />
+                  Mobile No.        : <input type="text" name="Lmob" id="Lmob" /> <br /><br />
+                  Mail Id           : <input type="text" name="Lmail" id="Lmail" /> <br /><br />
+                  Address           : <input type="text" name="Laddr" id="Laddr"/> <br /><br />
+                  City              : <input type="text" name="Lcity" id="Lcity"/><br ><br />
+                  State             : <input type="text" name="Lstate" id="Lstate"/><br ><br />
+                  Gender            : <input type="text" name="Lgender" id="Lgender"/><br ><br />
+                  Wallet Address    : <input type="text" name="Lwallet" id="Lwallet"/><br ><br />
+                </div>
+                <div class="table-wrapper">
+                <h2>Interested Properties</h2>
+                <table  id='dataTbl' class="fl-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Regno</th>
+                        <th scope="col">type</th>
+                        <th scope="col">loc</th>
+                        <th scope="col">rent</th>
+                        <th scope="col">Deposit</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Tenant</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Contract_Address</th>
+                        <th scope="col">Contract_Status</th>
+                        <th scope="col">Contract_Number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr></tr>
+                    </tbody>
+                  </table>
+            </div>
+                <div class="buttons">
+                  <button id="back" onclick="window.location.href='Viewtanent.html'">BACK</button>
+        
+                  </div>
+              </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+            import { getDatabase, set, get, ref ,push, child, onValue, update, orderByChild} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+            const firebaseConfig = {
+                    apiKey: "AIzaSyCWlUuCtJMfN-6zc5BhAwpLa1OpPIQqsqk",
+                    authDomain: "propert-rental-5669d.firebaseapp.com",
+                    databaseURL: "https://propert-rental-5669d-default-rtdb.firebaseio.com",
+                    projectId: "propert-rental-5669d",
+                    storageBucket: "propert-rental-5669d.appspot.com",
+                    messagingSenderId: "680379316651",
+                    appId: "1:680379316651:web:c3338e8b66b7b585aebaee"
+            };
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+            const urlParams = new URLSearchParams(window.location.search);
+            const TregNo = urlParams.get('Treg');
+            let LregNo;
+            document.addEventListener('DOMContentLoaded', (e) => {
+                const dbRef = ref(database, 'Tenant/' + TregNo);
+                try {
+                    onValue(dbRef, (snapshot) => {
+                        const childData = snapshot.val();
+
+                        document.getElementById('TRegno').value = childData.Reg_No || '';
+                        document.getElementById('Tname').value = childData.name || '';
+                        document.getElementById('Tmob').value = childData.mob || '';
+                        document.getElementById('Tmail').value = childData.mail || '';
+                        document.getElementById('Taddr').value = childData.address || '';
+                        document.getElementById('Tcity').value = childData.City || '';
+                        document.getElementById('Tstate').value = childData.State || '';
+                        document.getElementById('Tgender').value = childData.gender || '';
+                        document.getElementById('Twallet').value = childData.Wallet_addr || '';
+
+                        const TregNo = childData.Reg_No;
+                    });
+                } 
+                catch (e) {
+                    console.error(e);
+                }
+                const dbRef1 = ref(database, 'Landlord/' + regno);
+                try {
+                    onValue(dbRef1, (snapshot) => {
+                        const childData = snapshot.val();
+
+                        document.getElementById('LRegno').value = childData.Reg_No || '';
+                        document.getElementById('Lname').value = childData.name || '';
+                        document.getElementById('Lmob').value = childData.mob || '';
+                        document.getElementById('Lmail').value = childData.mail || '';
+                        document.getElementById('Laddr').value = childData.address || '';
+                        document.getElementById('Lcity').value = childData.City || '';
+                        document.getElementById('Lstate').value = childData.State || '';
+                        document.getElementById('Lgender').value = childData.gender || '';
+                        document.getElementById('Lwallet').value = childData.Wallet_addr || '';
+
+                        LregNo = childData.Reg_No;
+                    });
+                } 
+                catch (e) {
+                    console.error(e);
+                }
+
+                const dbRef2 = ref(database, 'Property');
+  
+  try {
+    onValue(dbRef2, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const childKey = childSnapshot.key;
+        const childData = childSnapshot.val();
+        
+        if (childData.Landlord == regno && childData.Tenant==TregNo && childData.interest=="interested"){
+          const row = "<tr><td>" + childData.Reg_No + "</td><td>" 
+            + childData.type + "</td><td>" + childData.location + "</td><td>" 
+            + childData.rent + "</td><td>" + childData.deposit + "</td><td>" 
+            + childData.interest + "</td><td>" + childData.Tenant + "</td><td>"+ childData.TDate + "</td><td>"
+            + childData.S_date + "</td><td>"+ childData.L_date + "</td><td>" 
+            + childData.contract_addr + "</td></td>"+ "</td><td>" 
+            + childData.contract_Status+ "</td><td>"+childData.contract_No +"</td></tr>";
+
+          const $row = $(row).appendTo('#dataTbl');
+
+          $row.on('click', (event) => {
+            // extract data from row
+            const regNo = childData.Reg_No;
+            const contractstat=childData.contract_Status;
+            console.log(contractstat);
+            // redirect to new page with property details
+            window.location.href = `createcntr.html?Treg=${TregNo}&Lreg=${LregNo}&regNo=${regNo}&cntrstat=${contractstat}`;
+          });
+        }
+      });
+  });
+  } catch (e) {
+    console.error(e);
+  }
+        });
+ 
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+        
+          <script src="./fireConfig.js"></script>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

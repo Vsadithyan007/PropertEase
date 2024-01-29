@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 20%;
+    }@media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+    
+            /* Set styles for the table */
+            table {
+              font-family: Arial, sans-serif;
+              font-size: 14px;
+              border-collapse: collapse;
+              width: 100%;
+              margin: auto;
+            }
+        
+            /* Set styles for the table cells and headings */
+            th, td {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: center;
+            }
+        
+            /* Center the table headings */
+            th {
+              background-color: #f2f2f2;
+              text-align: center;
+              padding: 12px;
+            }
+        
+            /* Add hover effect to table rows */
+            tr:hover {
+              background-color: #f5f5f5;
+            }
+        
+            /* Add striped rows to the table */
+            tr:nth-child(even) {
+              background-color: #f2f2f2;
+            }
+        
+            /* Set styles for the "Show Interest" button */
+            button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 14px;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+        
+            /* Center the table vertically and horizontally */
+
+  </style>
+  </style>
+</script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-12 sidenav">
+      <h2>Admin Dashboard</h2>
+      <ul class="nav nav-pills nav-justified">
+        <li><a href="AdminDash.html">Dashboard</a></li>
+        <li><a href="TpView.html">TopUp Requests</a></li>
+        <li class="active"><a href="#">Manage Landlord</a></li>
+        <li><a href="mngtenant.html">Manage Tenant</a></li>
+        <li><a href="wallet.html">Wallet Details</a></li>
+        <li><a href="Feedlandlord.html">Landlord Feedback</a></li>
+        <li><a href="Feedtenant.html">Tenant FeedBack</a></li>
+        <li><a href="logout.html">Log out</a></li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9"><div class="col-md-6">
+    <table  id='dataTbl'>
+      <thead>
+        <tr>
+          <th scope="col">Register No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Address</th>
+          <th scope="col">Mail Id</th>
+          <th scope="col">Mobile No.</th>
+          <th scope="col">Password</th>
+          <th scope="col">DOB</th>
+          <th scope="col">State</th>
+          <th scope="col">City</th>
+          <th scope="col">Wallet Address</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr></tr>
+      </tbody>
+    </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getDatabase, set, ref ,push, child, onValue, update} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+    
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+            apiKey: "AIzaSyCWlUuCtJMfN-6zc5BhAwpLa1OpPIQqsqk",
+            authDomain: "propert-rental-5669d.firebaseapp.com",
+            databaseURL: "https://propert-rental-5669d-default-rtdb.firebaseio.com",
+            projectId: "propert-rental-5669d",
+            storageBucket: "propert-rental-5669d.appspot.com",
+            messagingSenderId: "680379316651",
+            appId: "1:680379316651:web:c3338e8b66b7b585aebaee"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      
+      // Get a reference to the database service
+      const database = getDatabase(app);
+    
+      document.addEventListener('DOMContentLoaded', (e) => {
+        const dbRef = ref(database, "Landlord");
+        onValue(dbRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childKey = childSnapshot.key;
+          const childData = childSnapshot.val();
+          const row = "<tr><td>" + childData.Reg_No 
+            + "</td><td>" + childData.name + "</td><td>" + childData.gender 
+            + "</td><td>" + childData.address + "</td><td>" + childData.mail 
+            + "</td><td>" + childData.mob + "</td><td>" + childData.password 
+            + "</td><td>" + childData.DOB+ "</td><td>"+ childData.State 
+            + "</td><td>" + childData.City + "</td><td>" + childData.Wallet_addr 
+            + "</td></td>"+ "</td><td>" + childData.Status + "</td></tr>";
+
+            const $row = $(row).appendTo('#dataTbl');
+          $row.on('click', (event) => {
+            // extract data from row
+            const regNo = childData.Reg_No;
+            const name = childData.name;
+            const gender = childData.gender;
+            const addr = childData.address;
+            const mailid = childData.mail;
+            const mob = childData.mob;
+            const dob = childData.DOB;
+            const state = childData.State;
+            const city = childData.City;
+            const stat = childData.Status;
+            const passwrd=childData.password;
+            const wallet=childData.Wallet_addr;
+
+            // redirect to new page with property details
+            window.location.href = `landlordView.html?regNo=${regNo}&name=${name}&gender=${gender}&addr=${addr}&mailid=${mailid}&mob=${mob}&dob=${dob}&state=${state}&city=${city}&status=${stat}&password=${passwrd}&wallet=${wallet}`;
+ 
+        });
+        
+        });
+    
+        // Attach click event listener to Show Interest buttons
+    
+      });
+        
+
+});
+
+    </script>
+    </div>
+    </div>
+    </div></body></html>

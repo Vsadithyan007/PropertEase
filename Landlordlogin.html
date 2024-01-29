@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Firebase App (the core Firebase SDK) is always required -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+	<title>Landlord Login Form</title>
+	<link rel="stylesheet" type="text/css" href="login/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav>
+		<a href="Tenantlogin.html"  onclick="selectOption(this)">Tenant</a>
+		<a href="adminlogin.html"  onclick="selectOption(this)">Admin</a>
+	</nav>
+	<div class="container">
+		<div class="img">
+			<img src="login/img/landlord.gif">
+		</div>
+		<div class="login-content">
+			<form action="index.html">
+				<img src="login/img/avatar.svg">
+				<h2 class="title">Landlord Login</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Register Number</h5>
+           		   		<input type="text" id="regno" name="regno" class="input">
+           		   </div>
+				</div>
+				<div class="input-div one">
+					<div class="i">
+							<i class="fas fa-user"></i>
+					</div>
+					  <div class="div">
+						<h5>Email</h5>
+						<input type="email" id="email" name="email" class="input">
+						</div>
+				</div>
+				
+           		
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Password</h5>
+           		    	<input type="password" id="password" name="password" class="input">
+            	   </div>
+            	</div>
+            	<a href="#">Forgot Password?</a>
+            	<input type="submit" class="btn" value="Login">
+				<a href="Landlord.html">Create New Account</a>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="login/js/Landlordlogin.js"></script>
+</body>
+</html>

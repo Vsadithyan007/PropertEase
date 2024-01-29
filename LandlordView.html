@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 20%;
+    }@media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+    
+            /* Set styles for the table */
+            table {
+              font-family: Arial, sans-serif;
+              font-size: 14px;
+              border-collapse: collapse;
+              width: 100%;
+              margin: auto;
+            }
+        
+            /* Set styles for the table cells and headings */
+            th, td {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: center;
+            }
+        
+            /* Center the table headings */
+            th {
+              background-color: #f2f2f2;
+              text-align: center;
+              padding: 12px;
+            }
+        
+            /* Add hover effect to table rows */
+            tr:hover {
+              background-color: #f5f5f5;
+            }
+        
+            /* Add striped rows to the table */
+            tr:nth-child(even) {
+              background-color: #f2f2f2;
+            }
+        
+            /* Set styles for the "Show Interest" button */
+            button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 14px;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+        
+            /* Center the table vertically and horizontally */
+
+  </style>
+  </style>
+</script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-12 sidenav">
+      <h2>Admin Dashboard</h2>
+      <ul class="nav nav-pills nav-justified">
+        <li><a href="AdminDash.html">Dashboard</a></li>
+        <li><a href="TpView.html">TopUp Requests</a></li>
+        <li class="active"><a href="#">Manage Landlord</a></li>
+        <li><a href="mngtenant.html">Manage Tenant</a></li>
+        <li><a href="wallet.html">Wallet Details</a></li>
+        <li><a href="Feedlandlord.html">Landlord Feedback</a></li>
+        <li><a href="Feedtenant.html">Tenant FeedBack</a></li>
+        <li><a href="logout.html">Log out</a></li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9"><div class="col-md-6">
+        <div class="container">
+            <h2>Landlord Details</h2>
+            <hr />
+            <br />
+            <div class="form">
+              Register Number: <input type="text" name="RegNo" id="regno"/> <br /><br />
+              Name:&nbsp; <input type="text" name="name" id="name" /> <br /><br />
+              Gender: <input type="text" name="gender" id="gender" /> <br /><br />
+              Address: <input type="text" name="addr" id="addr" /> <br /><br />
+              Mail ID: <input type="email" name="mail" id="mail" /> <br /><br />
+              Mobile No.: <input type="text" name="mob" id="mob" /> <br /><br />
+              DOB: <input type="text" name="dob" id="dob" /> <br /><br /> 
+              Password: <input type="text" name="passwrd" id="passwrd" /> <br /><br />
+              State: <input type="text" name="state" id="state" /> <br /><br />
+              City: <input type="text" name="city" id="city" /> <br /><br />
+              Status: <input type="text" name="status" id="status"/> <br /><br />
+              Wallet Address: <input type="text" name="Waddr" id="Waddr" placeholder="Enter the Wallet Address" /> <br /><br />
+            </div>
+        
+            <div class="buttons">
+              <button id="back" onclick="window.location.href='mnglandlord.html'">BACK</button>
+
+              </div>
+          </div>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const regNo = urlParams.get('regNo');
+            const name1 = urlParams.get('name');
+            const gender = urlParams.get('gender');
+            const addr =urlParams.get('addr');
+            const mailid =urlParams.get('mailid');
+            const mob = urlParams.get('mob');
+            const dob = urlParams.get('dob');
+            const state = urlParams.get('state');
+            const city = urlParams.get('city');
+            const stat1= urlParams.get('status');
+            const paswd=urlParams.get('password');
+            const wallet=urlParams.get('wallet');
+
+            document.getElementById("regno").value = regNo;
+            document.getElementById("name").value = name1;
+            document.getElementById("gender").value = gender;
+            document.getElementById("addr").value = addr;
+            document.getElementById("mail").value = mailid;
+            document.getElementById("mob").value = mob;
+            document.getElementById("dob").value = dob;
+            document.getElementById("passwrd").value = paswd;
+            document.getElementById("state").value = state;
+            document.getElementById("city").value = city;
+            document.getElementById("status").value = stat1;
+            document.getElementById("Waddr").value = wallet ;
+            
+            // Create a new button element
+            var approveButton = document.createElement("button");
+            approveButton.id = "approve";
+            approveButton.style.color = "rgb(9, 5, 5)";
+            approveButton.style.backgroundColor = "rgb(24, 251, 48)";
+            approveButton.innerText = "APPROVE";
+
+            // Append the button to the appropriate location in the DOM
+            document.querySelector(".buttons").appendChild(approveButton);
+
+          
+            var approveButton = document.getElementById("approve");
+            console.log(stat1);
+            if(stat1=="Approved")
+            {
+              approveButton.remove();
+              var disapproveButton = document.createElement("button");
+              disapproveButton.id = "disapprove";
+              disapproveButton.style.color = "rgb(9, 5, 5)";
+              disapproveButton.style.backgroundColor = "rgb(251, 24, 47)";
+              disapproveButton.innerText = "DISAPPROVE";
+              document.querySelector(".buttons").appendChild(disapproveButton);
+              disapproveButton.addEventListener("click", function() {
+                var confirmed = window.confirm("Are you sure you want to Disapprove?");
+                  if (confirmed) {
+                    firebase.database().ref("Landlord/" + regNo).set({Reg_No: regNo, name: name1, gender: gender, address: addr, mail: mailid, mob: mob, password: paswd,State: state,City: city, DOB: dob,Status: "Disapproved",Wallet_addr:document.getElementById("Waddr").value});
+                    var ref = firebase.database().ref("Landlord/" + regNo);
+                    alert("Disapproved");
+                  }
+              })
+              disapproveButton.addEventListener("click", function() {
+                var confirmed = window.confirm("Are you sure you want to Disapprove?");
+                if (confirmed) {
+                    firebase.database().ref("Landlord/" + regNo).set({Reg_No: regNo, name: name1, gender: gender, address: addr, mail: mailid, mob: mob, password: paswd,State: state,City: city, DOB: dob,Status: "Disapproved",Wallet_addr:document.getElementById("Waddr").value});
+                    firebase.database().ref("Landlord/" + regNo).once("value").then(function(snapshot) {
+                      var sta = snapshot.child("Status").val();
+                      document.getElementById("status").value = sta;
+                    });
+                    var ref = firebase.database().ref("Landlord/" + regNo);
+                    alert("Disapproved");
+                    console.log("C1")
+                    disapproveButton.remove();
+                    document.querySelector(".buttons").appendChild(approveButton);
+                    approveButton.onclick = function () {
+                      var confirmed = window.confirm("Are you sure you want to Approve?");
+                      if (confirmed) {
+                        if(document.getElementById("Waddr").value != ""){
+                          firebase.database().ref("Landlord/" + regNo).set({Reg_No: regNo, name: name1, gender: gender, address: addr, mail: mailid, mob: mob, password: paswd,State: state,City: city, DOB:dob,Status:"Approved",Wallet_addr:document.getElementById("Waddr").value});
+                                var ref = firebase.database().ref("Landlord/" + regNo);
+                          }
+                        ref.once("value").then(function(snapshot) {
+                          if (snapshot.exists()){
+                            alert("Approved Successfully");
+                            console.log("C5")
+                            approveButton.remove();
+                            firebase.database().ref("Landlord/" + regNo).once("value").then(function(snapshot) {
+                              var sta = snapshot.child("Status").val();
+                              document.getElementById("status").value = sta;
+                            });
+                            document.querySelector(".buttons").appendChild(disapproveButton);
+                          }
+                      });
+                    }
+                  }
+                }
+            });
+          }
+          else{
+            approveButton.onclick = function () {
+                var confirmed = window.confirm("Are you sure you want to Approve?");
+                if (confirmed) {
+                  if(document.getElementById("Waddr").value != ""){
+                    firebase.database().ref("Landlord/" + regNo).set({Reg_No: regNo, name: name1, gender: gender, address: addr, mail: mailid, mob: mob, password: paswd,State: state,City: city, DOB: dob,Status: "Approved",Wallet_addr:document.getElementById("Waddr").value});
+                    firebase.database().ref("Wallet/Landlord/" + regNo).set({Tenant: regNo, Wallet_address:document.getElementById("Waddr").value});
+                    var ref = firebase.database().ref("Landlord/" + regNo);
+                  }
+                  ref.once("value").then(function(snapshot) {
+                    if (snapshot.exists()) {
+                      alert("Approved Successfully");
+                      console.log("C2")
+                      approveButton.remove();
+                      firebase.database().ref("Landlord/" + regNo).once("value").then(function(snapshot) {
+                        var sta = snapshot.child("Status").val();
+                        document.getElementById("status").value = sta;
+                      });
+                      var disapproveButton = document.createElement("button");
+                      disapproveButton.id = "disapprove";
+                      disapproveButton.style.color = "rgb(9, 5, 5)";
+                      disapproveButton.style.backgroundColor = "rgb(251, 24, 47)";
+                      disapproveButton.innerText = "DISAPPROVE";
+                      document.querySelector(".buttons").appendChild(disapproveButton);
+                      disapproveButton.addEventListener("click", function() {
+                        var confirmed = window.confirm("Are you sure you want to Disapprove?");
+                        if (confirmed) {
+                          firebase.database().ref("Landlord/" + regNo).set({Reg_No: regNo, name: name1, gender: gender, address: addr, mail: mailid, mob: mob, password: paswd,State: state,City: city, DOB: dob,Status: "Disapproved",Wallet_addr:document.getElementById("Waddr").value});
+                          var ref = firebase.database().ref("Landlord/" + regNo);
+                          alert("Disapproved");
+                          console.log("C3")
+                          disapproveButton.remove();
+                          document.querySelector(".buttons").appendChild(approveButton);
+                          firebase.database().ref("Landlord/" + regNo).once("value").then(function(snapshot) {
+                            var sta = snapshot.child("Status").val();
+                            document.getElementById("status").value = sta;
+                          });
+                        }
+                      });
+                    } else{
+                        alert("Not Approved"); 
+                    }
+                    });
+                }
+              disapproveButton.addEventListener("click", function() {
+                var confirmed = window.confirm("Are you sure you want to Disapprove?");
+                if (confirmed) {
+                  firebase.database().ref("Landlord/" + regNo).set({Reg_No: regNo, name: name1, gender: gender, address: addr, mail: mailid, mob: mob, password: paswd,State: state,City: city, DOB: dob,Status: "Disapproved",Wallet_addr:document.getElementById("Waddr").value});
+                  var ref = firebase.database().ref("Landlord/" + regNo);
+                  alert("Disapproved");
+                  console.log("C4")
+                  disapproveButton.remove();
+                  document.querySelector(".buttons").appendChild(approveButton);
+                  firebase.database().ref("Landlord/" + regNo).once("value").then(function(snapshot) {
+                    var sta = snapshot.child("Status").val();
+                    document.getElementById("status").value = sta;
+                  });
+                }
+              });
+            }         
+          }
+        </script>
+<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+<script src="./fireConfig.js"></script>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

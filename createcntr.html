@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Landlord</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    nav {
+	margin: 27px auto 0;
+
+	position: relative;
+	width: 100% ;
+	height: fit-content ;
+	background-color: #34495e;
+	border-radius: 8px;
+	font-size: 0;
+}
+a:hover {
+  color: rgb(255, 255, 255);
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+a:nth-child(1) {
+	width: 12.5%;
+}
+a:nth-child(2) {
+	width: 12.5%;
+}
+a:nth-child(3) {
+	width: 12.5%;
+}
+a:nth-child(4) {
+	width: 12.5%;
+}
+a:nth-child(5) {
+	width: 12.5%;
+}
+a:nth-child(6) {
+	width: 12.5%;
+}
+a:nth-child(7) {
+	width: 12.5%;
+}
+a:nth-child(8) {
+	width: 12.5%;
+}
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 12.5%;
+	left: 0;
+	background-color: #1abc9c;
+}
+nav .start-addpr, a:nth-child(2):hover~.animation {
+	width: 12.5%;
+	left: 12.5%;
+	background-color: #e74c3c;
+}
+nav .start-viewpr, a:nth-child(3):hover~.animation {
+	width: 12.5%;
+	left: 25%;
+	background-color: #3498db;
+}
+nav .start-viewten, a:nth-child(4):hover~.animation {
+	width: 12.5%;
+	left: 37.5%;
+	background-color: #9b59b6;
+}
+nav .start-mngcntr, a:nth-child(5):hover~.animation {
+	width: 12.5%;
+	left: 50%;
+	background-color: #e67e22;
+}
+nav .start-trnh, a:nth-child(6):hover~.animation {
+	width: 12.5%;
+	left: 62.5%;
+	background-color: #49e622;
+}
+nav .start-feed, a:nth-child(7):hover~.animation {
+	width: 12.5%;
+	left: 75%;
+	background-color: #22aee6;
+}
+nav .start-logout, a:nth-child(8):hover~.animation {
+	width: 12.5%;
+	left: 87.5%;
+	background-color: #e8dd1b;
+}
+
+
+
+
+p {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #ecf0f1;
+    font-family: 'Cherry Swash',cursive;
+    font-size: 16px;
+}
+
+span {
+    color: #2BD6B4;
+}
+
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+    
+            /* Set styles for the table */
+            table {
+              font-family: Arial, sans-serif;
+              font-size: 14px;
+              border-collapse: collapse;
+              width: 100%;
+              margin: auto;
+            }
+        
+            /* Set styles for the table cells and headings */
+            th, td {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: center;
+            }
+        
+            /* Center the table headings */
+            th {
+              background-color: #f2f2f2;
+              text-align: center;
+              padding: 12px;
+            }
+        
+            /* Add hover effect to table rows */
+            tr:hover {
+              background-color: #f5f5f5;
+            }
+        
+            /* Add striped rows to the table */
+            tr:nth-child(even) {
+              background-color: #f2f2f2;
+            }
+        
+            /* Set styles for the "Show Interest" button */
+            button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 14px;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+        
+            /* Center the table vertically and horizontally */
+
+  </style>
+  <script>var regno = sessionStorage.getItem('regno');
+</script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-12 sidenav">
+      <h2 style="font-family: fantasy;">Landlord Dashboard</h2>
+      
+
+      <nav>
+        <a href="LandLordDash.html">Home</a>
+        <a href="Property.html">ADD_PROPERTY</a>
+        <a href="PropertyList.html">VIEW_PROPERTY</a>
+        <a href="#">VIEW_TENANTS</a>
+        <a href="mngcontract.html">MANAGE_CONTRACT</a>
+        <a href="transHistory.html">TRANSACTION_HISTORY</a>
+        <a href="LandlordFeed.html">FEEDBACK</a>
+        <a href="logout.html">LOGOUT</a>
+        <div class="animation start-viewten"></div>
+      </nav>
+
+    </div>
+    <div class="col-sm-9">
+        <div class="col-md-6">
+            <div class="container">
+                <h2>Contract Details</h2>
+                <div class="form">
+                  Contract Number   : <input type="text" name="cno" id="cno" disabled> <br /><br />
+                  Tenant Register Number   : <input type="text" name="TRegno" id="TRegno"/> <br /><br />
+                  Tenant Name              : <input type="text" name="Tname" id="Tname" /> <br /><br />
+                  Tenant Mobile No.        : <input type="text" name="Tmob" id="Tmob" /> <br /><br />
+                  Tenant Mail Id           : <input type="text" name="Tmail" id="Tmail" /> <br /><br />
+                  Tenant Address           : <input type="text" name="Taddr" id="Taddr"/> <br /><br />
+                  Tenant City              : <input type="text" name="Tcity" id="Tcity"/><br ><br />
+                  Tenant State             : <input type="text" name="Tstate" id="Tstate"/><br ><br />
+                  Tenant Gender            : <input type="text" name="Tgender" id="Tgender"/><br ><br />
+                  Tenant Wallet Address    : <input type="text" name="Twallet" id="Twallet"/><br ><br />
+                  Landlord Register Number   : <input type="text" name="LRegno" id="LRegno"/> <br /><br />
+                  Landlord Name                 : <input type="text" name="Lname" id="Lname" /> <br /><br />
+                  Landlord Mobile No.           : <input type="text" name="Lmob" id="Lmob" /> <br /><br />
+                  Landlord Mail Id              : <input type="text" name="Lmail" id="Lmail" /> <br /><br />
+                  Landlord Address              : <input type="text" name="Laddr" id="Laddr"/> <br /><br />
+                  Landlord City                 : <input type="text" name="Lcity" id="Lcity"/><br ><br />
+                  Landlord State                : <input type="text" name="Lstate" id="Lstate"/><br ><br />
+                  Landlord Gender               : <input type="text" name="Lgender" id="Lgender"/><br ><br />
+                  Landlord Wallet Address       : <input type="text" name="Lwallet" id="Lwallet"/><br ><br />
+                  Property Register Number      : <input type="text" name="regno" id="regno"/> <br /><br />
+                  Appartment Type               : <input type="text" name="type" id="type" /> <br /><br />
+                  Location                      : <input type="text" name="loc" id="loc" /> <br /><br />
+                  Interest                      : <input type="text" name="intr" id="intr" /> <br /><br />
+                  Start Date                    : <input type="text" name="sdate" id="sdate" readonly/> <br /><br />
+                  End Date                      : <input type="text" name="ldate" id="ldate" readonly/> <br /><br />
+                  Contract Address              : <input type="text" name="contr" id="contr" readonly> <br /><br />
+                  Contract Status               : <input type="text" name="cstat" id="cstat" readonly/> <br /><br />
+                  Rent                          : <input type="text" name="rent" id="rent" /> <br /><br /> 
+                  Deposite Amount               : <input type="text" name="depo" id="depo" /> <br /><br />
+                </div>
+                <div class="buttons">
+                  <button id="back" onclick="window.location.href='Contract.html'">BACK</button>
+                  </div>
+              </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+            import { getDatabase, set, get, ref ,push, child, onValue, update, orderByChild} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+            const firebaseConfig = {
+                    apiKey: "AIzaSyCWlUuCtJMfN-6zc5BhAwpLa1OpPIQqsqk",
+                    authDomain: "propert-rental-5669d.firebaseapp.com",
+                    databaseURL: "https://propert-rental-5669d-default-rtdb.firebaseio.com",
+                    projectId: "propert-rental-5669d",
+                    storageBucket: "propert-rental-5669d.appspot.com",
+                    messagingSenderId: "680379316651",
+                    appId: "1:680379316651:web:c3338e8b66b7b585aebaee"
+            };
+
+
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+
+  window.addEventListener('load', function() {
+  var regNoInput = document.getElementById("cno");
+  
+  try {
+    firebase.database().ref("Contract/").orderByKey().limitToLast(1).on("value", function(snapshot) {
+      var num;
+      snapshot.forEach(function(childSnapshot) {
+        num = parseInt(childSnapshot.key) + 1;
+        document.getElementById("cno").value = num;
+        console.log(num);
+      });
+      
+      
+      // If no previous record, assign a default registration number
+      if (!snapshot.exists() || num==undefined ) {
+        console.log(num);
+        document.getElementById("cno").value =1;
+      }
+    });
+  } catch(error) {
+    console.log("Error: " + error.message);
+  }
+});
+
+
+
+            var approveButton = document.createElement("button");
+            approveButton.id = "init";
+            approveButton.style.color = "rgb(9, 5, 5)";
+            approveButton.style.backgroundColor = "rgb(24, 251, 48)";
+            approveButton.innerText = "INITIALIZE CONTRACT";
+           
+            
+
+            var cnoV,TregnumV, TnameV, TgenderV, TaddressV, TmailV, TmobV, TdobV, TstateV, TcityV;
+            var LregnumV, LnameV, LgenderV, LaddressV, LmailV, LmobV, LdobV, LstateV, LcityV;
+            var PregnumV, typeV, LocV, rentV, depoV, cntrstat, sdateV, ldateV;
+            var TwalletV,LwalletV;
+            function readFom() {
+              cnoV = document.getElementById("cno").value;
+              TwalletV = document.getElementById("Twallet").value;
+              LwalletV = document.getElementById("Lwallet").value;
+              TregnumV = document.getElementById("TRegno").value;
+              TnameV = document.getElementById("Tname").value;
+              TgenderV = document.getElementById("Tgender").value;
+              TaddressV = document.getElementById("Taddr").value;
+              TmailV = document.getElementById("Tmail").value;
+              TmobV = document.getElementById("Tmob").value;
+              TstateV = document.getElementById("Tstate").value;
+              TcityV = document.getElementById("Tcity").value;
+              LregnumV = document.getElementById("LRegno").value;
+              LnameV = document.getElementById("Lname").value;
+              LgenderV = document.getElementById("Lgender").value;
+              LaddressV = document.getElementById("Laddr").value;
+              LmailV = document.getElementById("Lmail").value;
+              LmobV = document.getElementById("Lmob").value;
+              LstateV = document.getElementById("Lstate").value;
+              LcityV = document.getElementById("Lcity").value;
+              PregnumV = document.getElementById("regno").value; 
+              typeV = document.getElementById("type").value;
+              LocV = document.getElementById("loc").value;
+              rentV = document.getElementById("rent").value;
+              depoV = document.getElementById("depo").value;
+              sdateV = document.getElementById("sdate").value;
+              ldateV = document.getElementById("ldate").value;
+              cntrstat = document.getElementById("cstat").value;
+              console.log(TregnumV, TnameV, TgenderV, TaddressV, TmailV, TmobV, TstateV, TcityV, LregnumV, LnameV, LgenderV, LaddressV, LmailV, LmobV, LstateV, LcityV, PregnumV, typeV, LocV, rentV, depoV,cntrstat,sdateV,ldateV,TwalletV,LwalletV);
+            }
+
+            var contractStatus,contractNo;
+            firebase.database().ref("Property/" + PregnumV).once("value").then(function(snapshot) {
+              if (snapshot.exists()) {
+                var propertyData = snapshot.val();
+                var contractNo = propertyData.contract_No;
+                contractStatus = propertyData.contract_Status;
+                
+                // Do something with contractNo and contractStatus
+              } else {
+                console.log("Property not found");
+              }
+            }).catch(function(error) {
+              console.error("Error retrieving property data:", error);
+            });
+
+
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const TregNo = urlParams.get('Treg');
+            const LregNo = urlParams.get('Lreg');
+            const regNo = urlParams.get('regNo');
+            const Cstat=urlParams.get('cntrstat');
+            console.log(Cstat);
+            var approveButton = document.createElement("button");
+            approveButton.id = "init";
+            approveButton.style.color = "rgb(9, 5, 5)";
+            approveButton.style.backgroundColor = "rgb(24, 251, 48)";
+            approveButton.innerText = "INITIALIZE THE CONTRACT";
+            if(Cstat!="Initiated"){
+              document.querySelector(".buttons").appendChild(approveButton);
+            }
+
+            
+
+
+            
+            approveButton.addEventListener("click", function() {
+            readFom();
+            if(TregnumV=="" || TnameV=="" || TgenderV=="" || TaddressV=="" || TmailV=="" || TmobV=="" || TdobV=="" || TstateV=="" || TcityV=="" || TdobV=="" || TregnumV=="" || TnameV=="" || TgenderV=="" || TaddressV=="" || TmailV=="" || TmobV=="" || TdobV=="" || TstateV=="" || TcityV=="" || TdobV=="" || PregnumV=="" || typeV=="" || LocV=="" || rentV=="" || depoV=="" || sdateV=="" || ldateV=="" || TwalletV=="" ||LwalletV=="")
+            {
+              alert("All Data must be filled");
+            }
+           else if(cntrstat==="Initiated" || cntrstat==="Started"){
+
+              alert("Contract Already initiated");
+              window.location.href='Viewtanent.html';
+            }
+            else{
+            firebase.database().ref("Contract/" + cnoV).set({T_id: TregnumV, 
+              T_name: TnameV, 
+              T_gen: TgenderV, 
+              T_addr: TaddressV, 
+              T_mail: TmailV, 
+              T_mob: TmobV, 
+              T_Wallet: TwalletV,
+              L_Waller: LwalletV,
+              T_state: TstateV, 
+              T_city: TcityV, 
+              L_id: LregnumV, 
+              L_name: LnameV, 
+              L_gen: LgenderV, 
+              L_addr: LaddressV, 
+              L_mail: LmailV, 
+              L_mob: LmobV, 
+              L_state: LstateV, 
+              L_city: LcityV, 
+              P_id: PregnumV, 
+              P_type: typeV, 
+              P_loc: LocV, 
+              P_rent: rentV, 
+              P_depo: depoV, 
+              S_date: sdateV,
+              L_date: ldateV,
+              C_stat: cntrstat,
+              C_addr: ""
+            });
+              firebase.database().ref("Property/" + PregnumV).update({contract_No:cnoV,contract_Status:"Initiated"});
+            alert("Data Inserted");
+            window.location.href='Viewtanent.html';
+            document.getElementById('Tname').value = "";
+            document.getElementById('Tmob').value = "";
+            document.getElementById('Tmail').value = "";
+            document.getElementById('Taddr').value = "";
+            document.getElementById('Tcity').value = "";
+            document.getElementById('Tstate').value = "";
+            document.getElementById('Tgender').value = "";
+            document.getElementById('Twallet').value = "";
+            document.getElementById('LRegno').value = "";
+            document.getElementById('Lname').value = "";
+            document.getElementById('Lmob').value = "";
+            document.getElementById('Lmail').value = "";
+            document.getElementById('Laddr').value = "";
+            document.getElementById('Lcity').value = "";
+            document.getElementById('Lstate').value = "";
+            document.getElementById('Lgender').value = "";
+            document.getElementById('Lwallet').value = "";
+            document.getElementById("regno").value = "";
+            document.getElementById("type").value = "";
+            document.getElementById("loc").value = "";
+            document.getElementById("intr").value = "";
+            document.getElementById("contr").value = "";
+            document.getElementById("cstat").value = "";
+            document.getElementById("rent").value = "";
+            document.getElementById("depo").value = "";
+            document.getElementById("sdate").value = "";
+            document.getElementById("ldate").value = "";
+            }
+          });
+
+
+
+
+
+
+            document.addEventListener('DOMContentLoaded', (e) => {
+
+            document.getElementById("TRegno").value = TregNo;
+            document.getElementById("LRegno").value = LregNo;         
+            document.getElementById("regno").value = regNo;
+
+            const dbRef = ref(database, 'Tenant/' + TregNo);
+                try {
+                    onValue(dbRef, (snapshot) => {
+                        const childData = snapshot.val();
+
+                        document.getElementById('Tname').value = childData.name || '';
+                        document.getElementById('Tmob').value = childData.mob || '';
+                        document.getElementById('Tmail').value = childData.mail || '';
+                        document.getElementById('Taddr').value = childData.address || '';
+                        document.getElementById('Tcity').value = childData.City || '';
+                        document.getElementById('Tstate').value = childData.State || '';
+                        document.getElementById('Tgender').value = childData.gender || '';
+                        document.getElementById('Twallet').value = childData.Wallet_addr || '';
+                    });
+                } 
+                catch (e) {
+                    console.error(e);
+                }
+            const dbRef1 = ref(database, 'Landlord/' + LregNo);
+                try {
+                    onValue(dbRef1, (snapshot) => {
+                        const childData = snapshot.val();
+
+                        document.getElementById('LRegno').value = childData.Reg_No || '';
+                        document.getElementById('Lname').value = childData.name || '';
+                        document.getElementById('Lmob').value = childData.mob || '';
+                        document.getElementById('Lmail').value = childData.mail || '';
+                        document.getElementById('Laddr').value = childData.address || '';
+                        document.getElementById('Lcity').value = childData.City || '';
+                        document.getElementById('Lstate').value = childData.State || '';
+                        document.getElementById('Lgender').value = childData.gender || '';
+                        document.getElementById('Lwallet').value = childData.Wallet_addr || '';
+                    });
+                } 
+                catch (e) {
+                    console.error(e);
+                }
+                const dbRef2 = ref(database, 'Property/' + regNo);
+                try {
+                    onValue(dbRef2, (snapshot) => {
+                        const childData = snapshot.val();
+                        console.log(childData);
+                        document.getElementById("regno").value = regNo || '';
+                        document.getElementById("type").value = childData.type || '';
+                        document.getElementById("loc").value = childData.location || '';
+                        document.getElementById("intr").value = childData.interest || '';
+                        document.getElementById("contr").value = childData.contract_addr || '';
+                        document.getElementById("cstat").value = childData.contract_Status || '';
+                        document.getElementById("rent").value = childData.rent || '';
+                        document.getElementById("sdate").value = childData.S_date || '';
+                        document.getElementById("ldate").value = childData.L_date || '';
+                        document.getElementById("depo").value = childData.deposit || '';
+                    });
+                } 
+                catch (e) {
+                    console.error(e);
+                }
+                
+
+            // redirect to new page with property details
+          });
+       
+ 
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+        
+          <script src="./fireConfig.js"></script>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

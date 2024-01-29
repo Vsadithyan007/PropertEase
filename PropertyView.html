@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Landlord</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    nav {
+	margin: 27px auto 0;
+
+	position: relative;
+	width: 100% ;
+	height: fit-content ;
+	background-color: #34495e;
+	border-radius: 8px;
+	font-size: 0;
+}
+a:hover {
+  color: rgb(255, 255, 255);
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+a:nth-child(1) {
+	width: 12.5%;
+}
+a:nth-child(2) {
+	width: 12.5%;
+}
+a:nth-child(3) {
+	width: 12.5%;
+}
+a:nth-child(4) {
+	width: 12.5%;
+}
+a:nth-child(5) {
+	width: 12.5%;
+}
+a:nth-child(6) {
+	width: 12.5%;
+}
+a:nth-child(7) {
+	width: 12.5%;
+}
+a:nth-child(8) {
+	width: 12.5%;
+}
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 12.5%;
+	left: 0;
+	background-color: #1abc9c;
+}
+nav .start-addpr, a:nth-child(2):hover~.animation {
+	width: 12.5%;
+	left: 12.5%;
+	background-color: #e74c3c;
+}
+nav .start-viewpr, a:nth-child(3):hover~.animation {
+	width: 12.5%;
+	left: 25%;
+	background-color: #3498db;
+}
+nav .start-viewten, a:nth-child(4):hover~.animation {
+	width: 12.5%;
+	left: 37.5%;
+	background-color: #9b59b6;
+}
+nav .start-mngcntr, a:nth-child(5):hover~.animation {
+	width: 12.5%;
+	left: 50%;
+	background-color: #e67e22;
+}
+nav .start-trnh, a:nth-child(6):hover~.animation {
+	width: 12.5%;
+	left: 62.5%;
+	background-color: #49e622;
+}
+nav .start-feed, a:nth-child(7):hover~.animation {
+	width: 12.5%;
+	left: 75%;
+	background-color: #22aee6;
+}
+nav .start-logout, a:nth-child(8):hover~.animation {
+	width: 12.5%;
+	left: 87.5%;
+	background-color: #e8dd1b;
+}
+
+
+
+
+p {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #ecf0f1;
+    font-family: 'Cherry Swash',cursive;
+    font-size: 16px;
+}
+
+span {
+    color: #2BD6B4;
+}
+
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+    
+            /* Set styles for the table */
+            table {
+              font-family: Arial, sans-serif;
+              font-size: 14px;
+              border-collapse: collapse;
+              width: 100%;
+              margin: auto;
+            }
+        
+            /* Set styles for the table cells and headings */
+            th, td {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: center;
+            }
+        
+            /* Center the table headings */
+            th {
+              background-color: #f2f2f2;
+              text-align: center;
+              padding: 12px;
+            }
+        
+            /* Add hover effect to table rows */
+            tr:hover {
+              background-color: #f5f5f5;
+            }
+        
+            /* Add striped rows to the table */
+            tr:nth-child(even) {
+              background-color: #f2f2f2;
+            }
+        
+            /* Set styles for the "Show Interest" button */
+            button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 14px;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+        
+            /* Center the table vertically and horizontally */
+
+  </style>
+  <script>var regno = sessionStorage.getItem('regno');
+</script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-12 sidenav">
+      <h2 style="font-family: fantasy;">Landlord Dashboard</h2>
+      
+
+      <nav>
+        <a href="LandLordDash.html">Home</a>
+        <a href="Property.html">ADD_PROPERTY</a>
+        <a href="#">VIEW_PROPERTY</a>
+        <a href="Viewtanent.html">VIEW_TENANTS</a>
+        <a href="mngcontract.html">MANAGE_CONTRACT</a>
+        <a href="transHistory.html">TRANSACTION_HISTORY</a>
+        <a href="LandlordFeed.html">FEEDBACK</a>
+        <a href="logout.html">LOGOUT</a>
+        <div class="animation start-viewpr"></div>
+      </nav>
+
+    </div>
+    <div class="col-sm-9">
+        <div class="container">
+            <h2>Property Details</h2>
+            <hr />
+            <br />
+            <div class="form">
+              Register Number: <input type="text" name="RegNo" id="regno"/> <br /><br />
+              Appartment Type:&nbsp; <input type="text" name="type" id="type" /> <br /><br />
+              Location: <input type="text" name="loc" id="loc" /> <br /><br />
+              Interest: <input type="text" name="intr" id="intr" /> <br /><br />
+              Contract Address: <input type="text" name="contr" id="contr" /> <br /><br />
+              Contract Status: <input type="text" name="cstat" id="cstat" /> <br /><br />
+              Contract Number: <input type="text" name="cntr" id="cntr" /> <br /><br />
+              Starting Date: <input type="date" name="sdate" id="sdate" readonly/> <br /><br /> 
+              Ending Date: <input type="date" name="ldate" id="ldate" readonly/> <br /><br /> 
+              Rent: <input type="text" name="rent" id="rent" /> <br /><br /> 
+              Deposite Amount: <input type="text" name="depo" id="depo" /> <br /><br />
+            </div>
+        
+            <div class="buttons">
+              <button id="delete" style="color: white; background-color: red;">DELETE</button>
+            
+              <button id="back" onclick="window.location.href='propertyList.html'">BACK</button>
+
+              </div>
+          </div>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const regNo = urlParams.get('regNo');
+            const type = urlParams.get('type');
+            const loc = urlParams.get('location');
+            const rent = urlParams.get('rent');
+            const deposit = urlParams.get('deposit');
+            const interest = urlParams.get('interest');
+            const tenant = urlParams.get('tenant');
+            const sdate = urlParams.get('sdate');
+            const ldate = urlParams.get('ldate');
+            const contractAddr = urlParams.get('contractAddr');
+            const contractStatus = urlParams.get('contractStatus');
+            const contractNo= urlParams.get('contractNo');
+
+            document.getElementById("regno").value = regNo;
+            document.getElementById("type").value = type;
+            document.getElementById("loc").value = loc;
+            document.getElementById("intr").value = interest;
+            document.getElementById("contr").value = contractAddr;
+            document.getElementById("cstat").value = contractStatus;
+            document.getElementById("rent").value = rent;
+            document.getElementById("sdate").value = sdate;
+            document.getElementById("ldate").value = ldate;
+            document.getElementById("depo").value = deposit;
+            document.getElementById("cntr").value = contractNo;
+
+            console.log(regNo, type, loc, rent, deposit, interest, tenant, sdate,ldate,contractAddr, contractStatus, contractNo);
+            var deleteButton = document.getElementById("delete");
+            deleteButton.onclick = function () {
+                var confirmed = window.confirm("Are you sure you want to Delete the record?");
+                if (confirmed) {
+                    firebase.database().ref("Property/" + regNo).remove();
+                    var ref = firebase.database().ref("Property/" + regNo);
+                    ref.remove().then(function() {
+                    console.log("Record deleted successfully");
+                    }).catch(function(error) {
+                    console.log("Error deleting record: " + error.message);
+                    });
+
+                    ref.once("value").then(function(snapshot) {
+                    if (snapshot.exists()) {
+                        console.log("Record still exists");
+                    } else {
+                        console.log("Record deleted successfully");
+                        document.getElementById("regno").value = "";
+                        document.getElementById("type").value = "";
+                        document.getElementById("loc").value = "";
+                        document.getElementById("intr").value = "";
+                        document.getElementById("contr").value = "";
+                        document.getElementById("cstat").value = "";
+                        document.getElementById("rent").value = "";
+                        document.getElementById("depo").value = "";
+                        document.getElementById("cntr").value =""; 
+                        document.getElementById("sdate").value = "";
+                        document.getElementById("ldate").value = ""; 
+                        deleteButton.remove();
+                    }
+                    });
+
+                }
+        }
+        </script>
+          <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+        
+          <script src="./fireConfig.js"></script>
+        
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

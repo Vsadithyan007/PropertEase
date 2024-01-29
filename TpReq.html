@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tenant</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    nav {
+	margin: 27px auto 0;
+
+	position: relative;
+	width: 100% ;
+	height: fit-content ;
+	background-color: #34495e;
+	border-radius: 8px;
+	font-size: 0;
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+a:hover {
+  color: rgb(255, 255, 255);
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+a:nth-child(1) {
+	width: 12.5%;
+}
+a:nth-child(2) {
+	width: 12.5%;
+}
+a:nth-child(3) {
+	width: 12.5%;
+}
+a:nth-child(4) {
+	width: 12.5%;
+}
+a:nth-child(5) {
+	width: 12.5%;
+}
+a:nth-child(6) {
+	width: 12.5%;
+}
+a:nth-child(7) {
+	width: 12.5%;
+}
+a:nth-child(8) {
+	width: 12.5%;
+}
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 12.5%;
+	left: 0;
+	background-color: #1abc9c;
+}
+nav .start-topup, a:nth-child(2):hover~.animation {
+	width: 12.5%;
+	left: 12.5%;
+	background-color: #e74c3c;
+}
+nav .start-propd, a:nth-child(3):hover~.animation {
+	width: 12.5%;
+	left: 25%;
+	background-color: #3498db;
+}
+nav .start-contrd, a:nth-child(4):hover~.animation {
+	width: 12.5%;
+	left: 37.5%;
+	background-color: #9b59b6;
+}
+nav .start-pay, a:nth-child(5):hover~.animation {
+	width: 12.5%;
+	left: 50%;
+	background-color: #e67e22;
+}
+nav .start-trnh, a:nth-child(6):hover~.animation {
+	width: 12.5%;
+	left: 62.5%;
+	background-color: #49e622;
+}
+nav .start-feed, a:nth-child(7):hover~.animation {
+	width: 12.5%;
+	left: 75%;
+	background-color: #22aee6;
+}
+nav .start-logout, a:nth-child(8):hover~.animation {
+	width: 12.5%;
+	left: 87.5%;
+	background-color: #e8dd1b;
+}
+
+
+
+
+p {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #ecf0f1;
+    font-family: 'Cherry Swash',cursive;
+    font-size: 16px;
+}
+
+span {
+    color: #2BD6B4;
+}
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+    
+    *{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 30px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before{
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child{
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+            /* Set styles for the "Show Interest" button */
+            button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 8px 16px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 14px;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+        
+            /* Center the table vertically and horizontally */
+
+  </style>
+  <script>var regno = sessionStorage.getItem('regno');
+</script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-12 sidenav">
+      <h2 style="font-family: fantasy;">Tenant Dashboard</h2>
+      <nav>
+        <a href="TenantDash.html">Home</a>
+        <a href="#">TOPUP_WALLET</a>
+        <a href="PropertDetails.html">PROPERTY_DETAILS</a>
+        <a href="TenantCntrDetails.html">CONTRACT_DETAILS</a>
+        <a href="#">PAY_RENT</a>
+        <a href="#">TRANSACTION_HISTORY</a>
+        <a href="TenantFeed.html">FEEDBACK</a>
+        <a href="logout.html">LOGOUT</a>
+        <div class="animation start-topup"></div>
+      </nav>
+    </div>
+    <br>
+    
+    <div class="col-sm-9" style="width: 100%;">
+    <div class="container">
+      <h2>TopUp Wallet</h2>
+      <hr />
+      <br />
+      <div class="form" >
+        Amount :&nbsp; <input type="text" name="amt" id="amt" /> <br /><br />
+      </div>
+
+      <div class="buttons">
+        <button id="req">Request</button>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
+
+    <script src="./fireConfig.js"></script>
+
+    <script src="./Tpreq.js"></script>
+  </body>
+</html>
